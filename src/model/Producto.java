@@ -1,5 +1,7 @@
 package model;
 
+import javax.swing.*;
+
 public class Producto {
     private int codigo;
     private String nombre;
@@ -7,17 +9,19 @@ public class Producto {
     private String tipo;
     private int cantidad;
     private String stock;
+    private String imagen;
 
 
     public Producto() {
     }
 
-    public Producto(int codigo, String nombre, String tipo, int cantidad, String stock) {
+    public Producto(int codigo, String nombre, String tipo, int cantidad, String stock, String imagen) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.tipo = tipo;
         this.cantidad = cantidad;
         this.stock = stock;
+        this.imagen = imagen;
     }
 
     public int getCodigo() {
@@ -60,15 +64,12 @@ public class Producto {
         this.stock = stock;
     }
 
-    @Override
-    public String toString() {
-        return "\tProducto" +
-                "\n==================================================================================="+
-                "\ncodigo: " + codigo +
-                "\nnombre: " + nombre +
-                "\ntipo: " + tipo +
-                "\ncantidad: " + cantidad +
-                "\nstock: " + stock  +
-                "\n======================================================================================";
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

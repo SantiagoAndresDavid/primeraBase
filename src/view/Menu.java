@@ -17,19 +17,19 @@ public class Menu {
         int opcion = scanner.nextInt();
         switch (opcion){
             case 1:
-                new Insert().crear();
+                Insert insert = new Insert(null,true);
                 new Menu().imprimirMenu();
             case 2:
                 new Delete().eliminar();
                 new Menu().imprimirMenu();
             case 3:
-                new Select().buscar();
+                Select select = new Select(null,true);
                 new Menu().imprimirMenu();
             case 4:
-                new Update().modificar();
+                Update update = new Update(null,true);
                 new Menu().imprimirMenu();
             case 5:
-                System.exit(5);
+
             default:
                 System.out.println("opcion incorrecta");
         }

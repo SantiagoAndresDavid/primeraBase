@@ -14,12 +14,13 @@ public class Consultas extends Conexccion {
         Connection con = null;
         try {
             con = conectar();
-            ps = con.prepareStatement("insert into productos (codigo,nombre,tipo,cantidad,stock) values (?,?,?,?,?)");
+            ps = con.prepareStatement("insert into productos (codigo,nombre,tipo,cantidad,stock,ruta) values (?,?,?,?,?,?)");
             ps.setInt(1, producto.getCodigo());
             ps.setString(2, producto.getNombre());
             ps.setString(3, producto.getTipo());
             ps.setInt(4, producto.getCantidad());
             ps.setString(5, producto.getStock());
+            ps.setString(6, producto.getImagen());
             ps.executeUpdate();
             con.close();
 
@@ -33,12 +34,14 @@ public class Consultas extends Conexccion {
         PreparedStatement ps = null;
         try {
             con = conectar();
-            ps = con.prepareStatement("UPDATE productos SET nombre=?, tipo=?,cantidad=?,stock=? WHERE codigo=?");
+            ps = con.prepareStatement("UPDATE productos SET nombre=?, tipo=?,cantidad=?,stock=?,ruta=? WHERE codigo=?");
             ps.setString(1, producto.getNombre());
             ps.setString(2, producto.getTipo());
             ps.setInt(3, producto.getCantidad());
             ps.setString(4, producto.getStock());
-            ps.setInt(5, codigo);
+            ps.setString(5, producto.getImagen());
+            ps.setInt(6, codigo);
+
             ps.executeUpdate();
             con.close();
 
@@ -63,6 +66,7 @@ public class Consultas extends Conexccion {
                 producto.setTipo(rs.getString("tipo"));
                 producto.setCantidad(rs.getInt("cantidad"));
                 producto.setStock(rs.getString("stock"));
+                producto.setImagen(rs.getString("ruta"));
                 return producto;
             } else {
                 System.out.println("no se encontro nada");
